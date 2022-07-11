@@ -1,0 +1,41 @@
+@import 'var', 'fun';
+
+div {
+    border: $red solid;
+    padding: 1rem;
+    text-align: center;
+    h1 {
+        color: green;
+        text-decoration: underline $blue;
+    }
+
+    h2 {
+        @extend h1;
+        padding: 1rem;
+        border: red solid rem(2px);
+    }
+    section {
+        display: flex;
+        justify-content: center;
+
+        article {
+            width: 100%;
+
+            &:nth-child(even) {
+                @include article($red, $green, 1rem);
+            }
+
+            &:nth-child(odd) {
+                @include article($blue, $green, 1rem);
+            }
+        }
+
+        &:nth-child(4) {
+            article {
+                @include article($green, $blue, rem(24px));
+                margin-top: 1rem;
+            }
+        }
+    }
+
+}
